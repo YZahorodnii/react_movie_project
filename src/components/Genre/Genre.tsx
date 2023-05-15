@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 
-const Movie: FC = () => {
+const Genre: FC = () => {
     return (
         <div>
-            Movie
+            Genre
         </div>
     );
 };
 
-export {Movie};
+export {Genre};
