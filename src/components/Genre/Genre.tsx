@@ -6,7 +6,6 @@ import {genreActions} from "../../redux/slices";
 
 interface IProps {
     genre: IGenre
-    id: number
 }
 
 
@@ -14,14 +13,17 @@ const Genre: FC<IProps> = ({genre}) => {
     const dispatch = useAppDispatch();
 
     const {id, name} = genre;
+
+    let genreName = name.toLowerCase().split('').filter(e => e.trim().length).join('')
     const handleLinkClick  = (event: React.MouseEvent<HTMLElement>) => {
         // event.preventDefault()
-        dispatch(genreActions.setSelectedGenre(id))
+        dispatch(genreActions.setSelectedGenreName(genreName))
+        dispatch(genreActions.setSelectedGenreId(id))
     }
 
     return (
         <div>
-            <NavLink onClick={handleLinkClick} to={`/genres/${name.toLowerCase()}`}><div>{name}</div></NavLink>
+            <NavLink onClick={handleLinkClick} to={`/genres/${genreName}`}><div>{name}</div></NavLink>
         </div>
     );
 };

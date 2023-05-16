@@ -2,15 +2,27 @@ import React, {FC} from 'react';
 
 import {IMovie} from "../../interfaces";
 import {PosterPreview} from "../PosterPreview";
+import {useNavigate} from "react-router-dom";
+import {useAppDispatch} from "../../hooks";
+import {moviesActions} from "../../redux/slices";
 
 interface IProps {
     movie: IMovie
 }
 const MovieListCard: FC<IProps> = ({movie}) => {
     let {id, overview, genre_ids, title, vote_average} = movie;
+    const dispatch = useAppDispatch();
+
+    const navigate = useNavigate();
+    const toMovieInfo = () => {
+        navigate(`/movies/${id}`)
+        dispatch(moviesActions.setMovieId(id))
+    }
+
     return (
         <div>
-            <PosterPreview/>
+            {/*<NavLink to={`/movies/${id}`}><PosterPreview/></NavLink>*/}
+            <div onClick={toMovieInfo}><PosterPreview/></div>
             <div>{id}</div>
             <div>{overview}</div>
             <div>genre:{genre_ids}</div>

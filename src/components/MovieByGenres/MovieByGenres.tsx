@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {IMovie} from "../../interfaces";
 import {PosterPreview} from "../PosterPreview";
+import {useNavigate} from "react-router-dom";
 
 interface IProps {
     key: number,
@@ -8,9 +9,15 @@ interface IProps {
 }
 const MovieByGenres: FC<IProps> = ({movie}) => {
     let {id, overview, genre_ids, title, vote_average} = movie;
+
+    const navigate = useNavigate();
+    const toMovieInfo = () => {
+        navigate(`movies/${id}`)
+    }
+
     return (
         <div>
-            <PosterPreview/>
+            <div onClick={toMovieInfo}><PosterPreview/></div>
             <div>{id}</div>
             <div>{overview}</div>
             <div>genre:{genre_ids}</div>

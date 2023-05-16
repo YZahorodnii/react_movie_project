@@ -6,12 +6,14 @@ import {moviesService} from "../../services";
 
 interface IState{
     movies: IMovie[],
-    currentPage: number
+    currentPage: number,
+    movieId: number
 }
 
 const initialState: IState = {
     movies: [],
-    currentPage: null
+    currentPage: null,
+    movieId: null
 }
 
 // const getAllMovies = createAsyncThunk<IMovie, void>(
@@ -35,6 +37,9 @@ let slice = createSlice({
         setMovies: (state, action) => {
             const {results} = action.payload
             state.movies = results
+        },
+        setMovieId: (state, action) => {
+            state.movieId = action.payload
         }
     }/*,
     extraReducers: builder => {

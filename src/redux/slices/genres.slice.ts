@@ -3,12 +3,14 @@ import {IGenre} from "../../interfaces";
 
 interface IState {
     genres: IGenre[],
-    selectedGenre: number
+    selectedGenreId: number,
+    selectedGenreName: string
 }
 
 const initialState: IState = {
     genres: [],
-    selectedGenre: null
+    selectedGenreId: null,
+    selectedGenreName: null
 }
 
 let slice = createSlice({
@@ -19,8 +21,11 @@ let slice = createSlice({
             const {genres} = action.payload
             state.genres = genres
         },
-        setSelectedGenre: (state, action) => {
-            state.selectedGenre = action.payload
+        setSelectedGenreId: (state, action) => {
+            state.selectedGenreId = action.payload
+        },
+        setSelectedGenreName: (state, action) => {
+            state.selectedGenreName = action.payload
         }
     }
 });

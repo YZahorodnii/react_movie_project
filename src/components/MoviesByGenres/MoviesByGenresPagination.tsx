@@ -4,14 +4,15 @@ import {useSearchParams} from "react-router-dom";
 
 const MoviesByGenresPagination: FC = () => {
     const [query, setQuery] = useSearchParams();
-    const {selectedGenre} = useAppSelector(state => state.genresReducer);
+    const {selectedGenreId} = useAppSelector(state => state.genresReducer);
+    console.log(selectedGenreId);
 
     const prev = async () => {
-        await setQuery(prev => ({...prev, with_genres: selectedGenre, page: +prev.get('page')-1}))
+        await setQuery(prev => ({...prev, with_genres: selectedGenreId, page: +prev.get('page')-1}))
     }
 
     const next = async () => {
-        await setQuery(prev => ({...prev, with_genres: selectedGenre, page: +prev.get('page')+1}))
+        await setQuery(prev => ({...prev, with_genres: selectedGenreId, page: +prev.get('page')+1}))
     }
 
     let queryPage = +query.get('page')

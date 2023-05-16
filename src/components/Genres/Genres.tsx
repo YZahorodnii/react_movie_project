@@ -16,7 +16,7 @@ const Genres: FC = () => {
 
     return (
         <div>
-            {genres.map(genre => <Genre genre={genre} id={genre.id}/>)}
+            {genres.map(genre => <Genre genre={genre} key={genre.id}/>)}
         </div>
     );
 };

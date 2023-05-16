@@ -6,13 +6,12 @@ import {moviesActions} from "../../redux/slices";
 import {MovieByGenres} from "../MovieByGenres";
 
 const MoviesByGenres = () => {
-    const {selectedGenre} = useAppSelector(state => state.genresReducer);
+    const {selectedGenreId} = useAppSelector(state => state.genresReducer);
     const {movies} = useAppSelector(state => state.moviesReducer);
-    console.log(selectedGenre);
     const [query, setQuery] = useSearchParams();
 
     useEffect(() => {
-        setQuery(prev => ({...prev, with_genre: `${selectedGenre}`, page: '1'}))
+        setQuery(prev => ({...prev, with_genre: `${selectedGenreId}`, page: '1'}))
     }, [])
 
     let queryPage = +query.get('page')===0?1:+query.get('page')
@@ -20,8 +19,8 @@ const MoviesByGenres = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        moviesService.getMoviesByGenre(selectedGenre, queryPage).then(value => value.data).then(value => dispatch(moviesActions.setMovies(value)))
-    }, [dispatch, selectedGenre, query])
+        moviesService.getMoviesByGenre(selectedGenreId, queryPage).then(value => value.data).then(value => dispatch(moviesActions.setMovies(value)))
+    }, [dispatch, selectedGenreId, query])
     return (
         <div>
             {movies.map(movie => <MovieByGenres movie={movie} key={movie.id}/>)}
