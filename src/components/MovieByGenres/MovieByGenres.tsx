@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
-
 import {IMovie} from "../../interfaces";
 import {PosterPreview} from "../PosterPreview";
 
 interface IProps {
+    key: number,
     movie: IMovie
 }
-const MovieListCard: FC<IProps> = ({movie}) => {
+const MovieByGenres: FC<IProps> = ({movie}) => {
     let {id, overview, genre_ids, title, vote_average} = movie;
     return (
         <div>
@@ -22,4 +22,4 @@ const MovieListCard: FC<IProps> = ({movie}) => {
     );
 };
 
-export {MovieListCard};
+export {MovieByGenres};

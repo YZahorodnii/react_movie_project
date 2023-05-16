@@ -2,18 +2,27 @@ import {createSlice} from "@reduxjs/toolkit";
 import {IGenre} from "../../interfaces";
 
 interface IState {
-    genres: IGenre[]
+    genres: IGenre[],
+    selectedGenre: number
 }
 
 const initialState: IState = {
-    genres: []
+    genres: [],
+    selectedGenre: null
 }
 
 let slice = createSlice({
     name: 'genresSlice',
     initialState,
-    reducers: {},
-    extraReducers: {}
+    reducers: {
+        setGenres: (state, action) => {
+            const {genres} = action.payload
+            state.genres = genres
+        },
+        setSelectedGenre: (state, action) => {
+            state.selectedGenre = action.payload
+        }
+    }
 });
 
 let {reducer: genresReducer, actions} = slice;

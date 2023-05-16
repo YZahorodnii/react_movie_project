@@ -17,8 +17,8 @@ const MovieListPagination: FC = () => {
     return (
         <div>
             <button disabled={queryPage===1} onClick={prev}>prev</button>
-            {+query.get('page')}
-            <button onClick={next}>next</button>
+            {queryPage}
+            <button disabled={queryPage===500} onClick={next}>next</button>
         </div>
     );
 };
