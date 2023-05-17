@@ -5,7 +5,6 @@ import {useSearchParams} from "react-router-dom";
 const MoviesByGenresPagination: FC = () => {
     const [query, setQuery] = useSearchParams();
     const {selectedGenreId} = useAppSelector(state => state.genresReducer);
-    console.log(selectedGenreId);
 
     const prev = async () => {
         await setQuery(prev => ({...prev, with_genres: selectedGenreId, page: +prev.get('page')-1}))

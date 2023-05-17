@@ -2,7 +2,8 @@ import React, {FC} from 'react';
 import {IGenre} from "../../interfaces";
 import {NavLink} from "react-router-dom";
 import {useAppDispatch} from "../../hooks";
-import {genreActions} from "../../redux/slices";
+import {genreActions, moviesActions} from "../../redux/slices";
+import {Badge} from "react-bootstrap";
 
 interface IProps {
     genre: IGenre
@@ -23,7 +24,7 @@ const Genre: FC<IProps> = ({genre}) => {
 
     return (
         <div>
-            <NavLink onClick={handleLinkClick} to={`/genres/${genreName}`}><div>{name}</div></NavLink>
+            <NavLink onClick={handleLinkClick} to={`/genres/${genreName}`}><Badge>{name}</Badge></NavLink>
         </div>
     );
 };

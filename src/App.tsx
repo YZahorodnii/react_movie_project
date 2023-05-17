@@ -9,7 +9,7 @@ import {useAppSelector} from "./hooks";
 
 function App() {
 
-    const {movieId} = useAppSelector(state => state.moviesReducer);
+    const {movieIdFromMovies, movieIdFromGenre} = useAppSelector(state => state.moviesReducer);
     const {selectedGenreName} = useAppSelector(state => state.genresReducer);
 
     return (
@@ -20,8 +20,9 @@ function App() {
                     <Route path={'/home'} element={<HomePage/>}/>
                     <Route path={'/movies'} element={<MoviesPage/>}/>
                     <Route path={'/genres'} element={<GenresPage/>}/>
-                    <Route path={`genres/${selectedGenreName}`} element={<MoviesByGenrePage/>}/>
-                    <Route path={`movies/${movieId}`} element={<MovieInfoPage/>}/>
+                    <Route path={`/genres/${selectedGenreName}`} element={<MoviesByGenrePage/>}/>
+                    <Route path={`/movies/${movieIdFromMovies}`} element={<MovieInfoPage/>}/>
+                    <Route path={`/movies/${movieIdFromGenre}`} element={<MovieInfoPage/>}/>
                 </Route>
             </Routes>
         </div>

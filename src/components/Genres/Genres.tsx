@@ -6,12 +6,13 @@ import {genreActions} from "../../redux/slices";
 import {Genre} from "../Genre";
 
 const Genres: FC = () => {
-
+    console.log(':::::::GENRES START');
     let {genres} = useAppSelector(state => state.genresReducer);
     let dispatch = useAppDispatch();
 
     useEffect(() => {
         genresService.getGenres().then(value => value.data).then(value => dispatch(genreActions.setGenres(value)))
+        console.log('::::GENRES FETCHED::::')
     }, [dispatch])
 
     return (

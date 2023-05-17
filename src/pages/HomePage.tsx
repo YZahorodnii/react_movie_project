@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
+import {SearchMovies} from "../components/SearchMovies";
 
 const HomePage: FC = () => {
     return (
         <div>
-            Home Page <br/>
-            --- Find by name ---
+            <SearchMovies/>
         </div>
     );
 };

@@ -6,5 +6,6 @@ export interface IMovie {
     poster_path: string,
     vote_average: number,
     results: [],
-    page: number
+    page: number,
+    vote_count: number
 }
