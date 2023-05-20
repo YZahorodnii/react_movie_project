@@ -4,9 +4,11 @@
     align-items: center;
     flex-wrap: wrap;
     font-size: 50px;
+    padding: 100px 0 520px 0;
+
 }
 
 .Genre button {
-    border-radius: 40%;
+    border-radius: 50%;
     font-size: 30px;
 }
