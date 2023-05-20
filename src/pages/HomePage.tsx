@@ -10,6 +10,7 @@ const HomePage: FC = () => {
             <div className={css.Home}>
                 <SearchMovies/>
             </div>
+            Top rated movies:
                 <MovieList/>
         </div>
     );
