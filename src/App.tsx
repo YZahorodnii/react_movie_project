@@ -10,7 +10,6 @@ import {MoviesSearchPage} from "./pages";
 
 function App() {
 
-    const {movieIdFromMovies, movieIdFromGenre} = useAppSelector(state => state.moviesReducer);
     const {selectedGenreName} = useAppSelector(state => state.genresReducer);
 
     return (
@@ -22,8 +21,8 @@ function App() {
                     <Route path={'/movies'} element={<MoviesPage/>}/>
                     <Route path={'/genres'} element={<GenresPage/>}/>
                     <Route path={`/genres/${selectedGenreName}`} element={<MoviesByGenrePage/>}/>
-                    <Route path={`/movies/${movieIdFromMovies}`} element={<MovieInfoPage/>}/>
-                    <Route path={`/movies/${movieIdFromGenre}`} element={<MovieInfoPage/>}/>
+                    <Route path={'/movies/:id'} element={<MovieInfoPage/>}/>
+                    <Route path={'/movies/:id'} element={<MovieInfoPage/>}/>
                     <Route path={'/search'} element={<MoviesSearchPage/>}/>
                 </Route>
             </Routes>

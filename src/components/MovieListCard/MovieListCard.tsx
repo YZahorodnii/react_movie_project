@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {useLocation, useNavigate} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import Rater from "react-rater";
 
 import {IMovie} from "../../interfaces";
@@ -17,7 +17,6 @@ const MovieListCard: FC<IProps> = ({movie}) => {
     const navigate = useNavigate();
     const toMovieInfo = () => {
         navigate(`/movies/${id}`)
-        dispatch(moviesActions.setMovieIdFromMovies(id))
         dispatch(moviesActions.setPoster(poster_path))
         dispatch(moviesActions.setVoteRating(vote_average))
         dispatch(moviesActions.setDescription(overview))

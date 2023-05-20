@@ -6,8 +6,10 @@ import {useAppSelector} from "../../hooks";
 import {GenreBadge} from "../GenreBadge";
 import css from './MovieInfo.module.css'
 
+
 const MovieInfo: FC = () => {
     const {description, backdrop_path, themeTrigger} = useAppSelector(state => state.moviesReducer);
+
     return (
         <div className={themeTrigger ? css.Dark : css.Light}>
             <PosterPreview/>

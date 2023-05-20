@@ -1,10 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IMovie} from "../../interfaces";
+import {IMovie, IVideo} from "../../interfaces";
 
 interface IState {
     movies: IMovie[],
-    movieIdFromMovies: number,
-    movieIdFromGenre: number,
     poster: HTMLImageElement,
     backdrop_path: string,
     rating: number,
@@ -12,14 +10,13 @@ interface IState {
     genresId: [],
     themeTrigger: boolean,
     searchKey: string,
-    totalPages: number
-
+    totalPages: number,
+    videos: IVideo[],
+    videoKey: string
 }
 
 const initialState: IState = {
     movies: [],
-    movieIdFromMovies: null,
-    movieIdFromGenre: null,
     poster: null,
     backdrop_path: null,
     rating: null,
@@ -27,7 +24,9 @@ const initialState: IState = {
     genresId: [],
     themeTrigger: false,
     searchKey: '',
-    totalPages: null
+    totalPages: null,
+    videos: [],
+    videoKey: null
 }
 
 let slice = createSlice({
@@ -38,12 +37,6 @@ let slice = createSlice({
             const {results, total_pages} = action.payload
             state.movies = results
             state.totalPages = total_pages
-        },
-        setMovieIdFromMovies: (state, action) => {
-            state.movieIdFromMovies = action.payload
-        },
-        setMovieIdFromGenre: (state, action) => {
-            state.movieIdFromGenre = action.payload
         },
         setPoster: (state, action) => {
             state.poster = action.payload
@@ -65,6 +58,13 @@ let slice = createSlice({
         },
         setBackdropPath: (state, action) => {
             state.backdrop_path = action.payload
+        },
+        setVideos: (state, action) => {
+            const {results} = action.payload
+            state.videos = results
+        },
+        setVideoKey: (state, action) => {
+            state.videoKey = action.payload
         }
     }
 });

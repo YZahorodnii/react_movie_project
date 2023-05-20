@@ -18,7 +18,6 @@ const MovieByGenres: FC<IProps> = ({movie}) => {
 
     const toMovieInfo = () => {
         navigate(`/movies/${id}`)
-        dispatch(moviesActions.setMovieIdFromGenre(id))
         dispatch(moviesActions.setPoster(poster_path))
         dispatch(moviesActions.setVoteRating(vote_average))
         dispatch(moviesActions.setDescription(overview))
