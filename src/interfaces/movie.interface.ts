@@ -7,5 +7,5 @@ export interface IMovie {
     vote_average: number,
     results: [],
     page: number,
-    vote_count: number
+    backdrop_path: string
 }

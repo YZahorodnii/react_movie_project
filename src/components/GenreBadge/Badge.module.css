@@ -1,0 +1,7 @@
+.Badge {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 25px;
+}

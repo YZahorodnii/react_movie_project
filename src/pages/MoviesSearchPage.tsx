@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {MovieList} from "../components/MovieList";
 
-const MoviesPage: FC = () => {
+const MoviesSearchPage: FC = () => {
     return (
         <div>
             <MovieList/>
@@ -9,4 +9,4 @@ const MoviesPage: FC = () => {
     );
 };
 
-export {MoviesPage};
+export {MoviesSearchPage};

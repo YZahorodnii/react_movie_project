@@ -5,14 +5,14 @@ interface IState {
     genres: IGenre[],
     selectedGenreId: number,
     selectedGenreName: string,
-    genresForMovie: string[]
+    idFromBadge: number
 }
 
 const initialState: IState = {
     genres: [],
     selectedGenreId: null,
     selectedGenreName: null,
-    genresForMovie: []
+    idFromBadge: null
 }
 
 let slice = createSlice({
@@ -29,8 +29,8 @@ let slice = createSlice({
         setSelectedGenreName: (state, action) => {
             state.selectedGenreName = action.payload
         },
-        setGenresForMovie: (state, action) => {
-            state.genresForMovie = action.payload
+        setIdFromBadge: (state, action) => {
+            state.idFromBadge = action.payload
         }
     }
 });

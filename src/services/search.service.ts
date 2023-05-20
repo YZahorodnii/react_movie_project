@@ -4,7 +4,7 @@ import {IMovie} from "../interfaces";
 import {urls} from "../constants";
 
 const searchService = {
-    getSearchMovies: (query: string): IRes<IMovie> => axiosService.get(urls.search.search, {params: {query: query}})
+    getMovies: (page: number, query: string): IRes<IMovie> => axiosService.get(urls.search.search, {params: {page: page, query: query}})
 }
 
 export {searchService}

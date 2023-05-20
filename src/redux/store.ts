@@ -4,12 +4,11 @@ import {genresReducer, moviesReducer} from "./slices";
 let rootReducer = combineReducers({
     moviesReducer,
     genresReducer
-    });
+});
 
 let setupStore = () => configureStore({
     reducer: rootReducer
 });
-
 
 type RootState = ReturnType<typeof rootReducer>
 type AppStore = ReturnType<typeof setupStore>

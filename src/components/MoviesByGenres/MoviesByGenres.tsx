@@ -14,15 +14,17 @@ const MoviesByGenres = () => {
         setQuery(prev => ({...prev, with_genre: `${selectedGenreId}`, page: '1'}))
     }, [])
 
-    let queryPage = +query.get('page')===0?1:+query.get('page')
+    let queryPage = +query.get('page') === 0 ? 1 : +query.get('page')
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+
         moviesService.getMoviesByGenre(selectedGenreId, queryPage).then(value => value.data).then(value => dispatch(moviesActions.setMovies(value)))
+
     }, [dispatch, selectedGenreId, query])
     return (
-        <div>
+        <div className="row row-cols-1 row-cols-md-5 g-4">
             {movies.map(movie => <MovieByGenres movie={movie} key={movie.id}/>)}
         </div>
     );

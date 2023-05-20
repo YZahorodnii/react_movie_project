@@ -4,8 +4,9 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import {GenresPage, HomePage, MoviesPage} from "./pages";
 import {MainLayout} from "./layouts";
 import {MoviesByGenrePage} from "./pages";
-import {MovieInfoPage} from "./pages/MovieInfoPage";
+import {MovieInfoPage} from "./pages";
 import {useAppSelector} from "./hooks";
+import {MoviesSearchPage} from "./pages";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                     <Route path={`/genres/${selectedGenreName}`} element={<MoviesByGenrePage/>}/>
                     <Route path={`/movies/${movieIdFromMovies}`} element={<MovieInfoPage/>}/>
                     <Route path={`/movies/${movieIdFromGenre}`} element={<MovieInfoPage/>}/>
+                    <Route path={'/search'} element={<MoviesSearchPage/>}/>
                 </Route>
             </Routes>
         </div>

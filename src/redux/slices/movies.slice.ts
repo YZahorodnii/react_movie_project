@@ -1,67 +1,49 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {AxiosError} from "axios";
-
+import {createSlice} from "@reduxjs/toolkit";
 import {IMovie} from "../../interfaces";
-import {moviesService} from "../../services";
 
-interface IState{
+interface IState {
     movies: IMovie[],
-    currentPage: number,
     movieIdFromMovies: number,
     movieIdFromGenre: number,
-    pathPoster: string,
     poster: HTMLImageElement,
+    backdrop_path: string,
     rating: number,
-    votes: number,
     description: string,
     genresId: [],
-    themeTrigger: boolean
+    themeTrigger: boolean,
+    searchKey: string,
+    totalPages: number
+
 }
 
 const initialState: IState = {
     movies: [],
-    currentPage: null,
     movieIdFromMovies: null,
     movieIdFromGenre: null,
-    pathPoster: null,
     poster: null,
+    backdrop_path: null,
     rating: null,
-    votes: null,
     description: null,
     genresId: [],
-    themeTrigger: false
+    themeTrigger: false,
+    searchKey: '',
+    totalPages: null
 }
-
-// const getAllMovies = createAsyncThunk<IMovie, void>(
-//     'moviesSlice/getAll',
-//    async (_, {rejectWithValue}) => {
-//         try {
-//             const {data} = await moviesService.getMovies();
-//             return data
-//         } catch (e) {
-//             const err = e as AxiosError
-//             // @ts-ignore
-//             return rejectWithValue(err.response.data)
-//         }
-//     }
-// )
 
 let slice = createSlice({
     name: 'moviesSlice',
     initialState,
     reducers: {
         setMovies: (state, action) => {
-            const {results} = action.payload
+            const {results, total_pages} = action.payload
             state.movies = results
+            state.totalPages = total_pages
         },
         setMovieIdFromMovies: (state, action) => {
             state.movieIdFromMovies = action.payload
         },
         setMovieIdFromGenre: (state, action) => {
             state.movieIdFromGenre = action.payload
-        },
-        setPathPoster: (state, action) => {
-            state.pathPoster = action.payload
         },
         setPoster: (state, action) => {
             state.poster = action.payload
@@ -72,22 +54,18 @@ let slice = createSlice({
         setDescription: (state, action) => {
             state.description = action.payload
         },
-        setVotes: (state, action) => {
-            state.votes = action.payload
-        },
         setGenresId: (state, action) => {
             state.genresId = action.payload
         },
         setThemeTrigger: state => {
             state.themeTrigger = !state.themeTrigger
+        },
+        setSearchKey: (state, action) => {
+            state.searchKey = action.payload
+        },
+        setBackdropPath: (state, action) => {
+            state.backdrop_path = action.payload
         }
-        /*,
-        extraReducers: builder => {
-            builder.addCase(getAllMovies.fulfilled, (state, action) => {
-               const {page, results} = action.payload
-                state.movies = results
-                state.page = page
-            })}*/
     }
 });
 

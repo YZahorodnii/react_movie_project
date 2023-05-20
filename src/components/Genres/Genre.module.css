@@ -1,0 +1,12 @@
+.Genre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 50px;
+}
+
+.Genre button {
+    border-radius: 40%;
+    font-size: 30px;
+}
